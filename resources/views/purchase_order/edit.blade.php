@@ -10,7 +10,6 @@
 
 <!-- Main content -->
 <section class="content">
-
   <!-- Page level currency setting -->
   <input type="hidden" id="p_code" value="{{$currency_details->code}}">
   <input type="hidden" id="p_symbol" value="{{$currency_details->symbol}}">

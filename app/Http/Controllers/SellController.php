@@ -66,6 +66,9 @@ class SellController extends Controller
         ];
     }
 
+    public function getOrders(){
+        
+    }
     /**
      * Display a listing of the resource.
      *

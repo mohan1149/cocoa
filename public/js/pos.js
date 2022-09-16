@@ -512,6 +512,7 @@ $(document).ready(function() {
                 if (result.success == 1) {
                     reset_pos_form();
                     toastr.success(result.msg);
+                    location.reload();
                 } else {
                     toastr.error(result.msg);
                 }
@@ -547,7 +548,7 @@ $(document).ready(function() {
                 if (result.success == 1) {
                     reset_pos_form();
                     toastr.success(result.msg);
-
+                    location.reload();
                     //Check if enabled or not
                     if (result.receipt.is_enabled) {
                         pos_print(result.receipt);
@@ -804,7 +805,7 @@ $(document).ready(function() {
                             }
                             $('#modal_payment').modal('hide');
                             toastr.success(result.msg);
-
+                            location.reload();
                             reset_pos_form();
 
                             //Check if enabled or not
@@ -2785,6 +2786,7 @@ $(document).on('submit', 'form#add_expense_modal_form', function(e) {
             if (result.success == true) {
                 $('#expense_modal').modal('hide');
                 toastr.success(result.msg);
+                location.reload();
             } else {
                 toastr.error(result.msg);
             }
@@ -2836,6 +2838,7 @@ function submitQuickContactForm(form) {
                 $('div.contact_modal').modal('hide');
                 update_shipping_address(result.data)
                 toastr.success(result.msg);
+                location.reload();
             } else {
                 toastr.error(result.msg);
             }

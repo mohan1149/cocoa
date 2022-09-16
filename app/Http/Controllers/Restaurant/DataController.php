@@ -55,7 +55,9 @@ class DataController extends Controller
                 }
                 if ($this->commonUtil->isModuleEnabled('tables')) {
                     $tables_enabled = true;
+                    $ids = Transaction::where('status','draft')->where('res_table_id','!=',null)->select(['res_table_id'])->get()->pluck('res_table_id');
                     $tables = ResTable::where('business_id', $business_id)
+                            ->whereNotIn('id',$ids)
                             ->where('location_id', $location_id)
                             ->pluck('name', 'id');
                 }
