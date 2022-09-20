@@ -805,7 +805,6 @@ $(document).ready(function() {
                             }
                             $('#modal_payment').modal('hide');
                             toastr.success(result.msg);
-                            location.reload();
                             reset_pos_form();
 
                             //Check if enabled or not
@@ -2093,7 +2092,6 @@ function pos_print(receipt) {
         $('#receipt_section').html(receipt.html_content);
         __currency_convert_recursively($('#receipt_section'));
         __print_receipt('receipt_section');
-
         setTimeout(function() {
             document.title = title;
         }, 1200);
@@ -2786,7 +2784,6 @@ $(document).on('submit', 'form#add_expense_modal_form', function(e) {
             if (result.success == true) {
                 $('#expense_modal').modal('hide');
                 toastr.success(result.msg);
-                location.reload();
             } else {
                 toastr.error(result.msg);
             }
@@ -2838,7 +2835,6 @@ function submitQuickContactForm(form) {
                 $('div.contact_modal').modal('hide');
                 update_shipping_address(result.data)
                 toastr.success(result.msg);
-                location.reload();
             } else {
                 toastr.error(result.msg);
             }
