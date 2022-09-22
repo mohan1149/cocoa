@@ -6,8 +6,8 @@
 		<tr>
 		<!-- <columns column-count="{{$barcode_details->stickers_in_one_row}}" column-gap="{{$barcode_details->col_distance*1}}"> -->
 	@endif
-		<td align="center" valign="center">
-			<div style="overflow: hidden !important;display: flex; flex-wrap: wrap;align-content: center;width: {{$barcode_details->width * 1}}in; height: {{$barcode_details->height * 1}}in; justify-content: center;">
+		<td>
+			<div>
 				
 
 				<div>
@@ -71,7 +71,7 @@
 					<br>
 
 					{{-- Barcode --}}
-					<img style="max-width:90% !important;height: {{$barcode_details->height*0.24}}in !important; display: block;" src="data:image/png;base64,{{DNS1D::getBarcodePNG($page_product->sub_sku, $page_product->barcode_type, 1,30, array(0, 0, 0), false)}}">
+					<img style="max-width:100% !important;height: {{$barcode_details->height*0.24}}in !important; display: block;" src="data:image/png;base64,{{DNS1D::getBarcodePNG($page_product->sub_sku, $page_product->barcode_type, 1,30, array(0, 0, 0), false)}}">
 					
 					<span style="font-size: 10px !important">
 						{{$page_product->sub_sku}}
@@ -90,7 +90,10 @@
 <style type="text/css">
 
 	td{
-		border: 1px dotted lightgray;
+		padding: 0px !important;
+		margin: 0px !important;
+		align-items: center !important;
+		align-content: center !important;
 	}
 	@media print{
 		
@@ -100,14 +103,14 @@
 
 		
 		@page {
-		size: {{$paper_width}}in {{$paper_height}}in;
+		/* size: {{$paper_width}}in {{$paper_height}}in; */
 
 		/*width: {{$barcode_details->paper_width}}in !important;*/
 		/*height:@if($barcode_details->paper_height != 0){{$barcode_details->paper_height}}in !important @else auto @endif;*/
-		margin-top: {{$margin_top}}in !important;
-		margin-bottom: {{$margin_top}}in !important;
-		margin-left: {{$margin_left}}in !important;
-		margin-right: {{$margin_left}}in !important;
+		/* margin-top: {{$margin_top}}in !important; */
+		/* margin-bottom: {{$margin_top}}in !important; */
+		/* margin-left: {{$margin_left}}in !important; */
+		/* margin-right: {{$margin_left}}in !important; */
 	}
 	}
 </style>

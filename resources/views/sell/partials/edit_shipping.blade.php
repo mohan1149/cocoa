@@ -7,34 +7,7 @@
 		</div>
 		<div class="modal-body">
 			<div class="row">
-				<div class="col-md-6">
-			        <div class="form-group">
-			            {!! Form::label('shipping_details', __('sale.shipping_details') . ':*' ) !!}
-			            {!! Form::textarea('shipping_details', !empty($transaction->shipping_details) ? $transaction->shipping_details : '', ['class' => 'form-control','placeholder' => __('sale.shipping_details'), 'required' ,'rows' => '4']); !!}
-			        </div>
-			    </div>
-
-			    <div class="col-md-6">
-			        <div class="form-group">
-			            {!! Form::label('shipping_address', __('lang_v1.shipping_address') . ':' ) !!}
-			            {!! Form::textarea('shipping_address',!empty($transaction->shipping_address) ? $transaction->shipping_address : '', ['class' => 'form-control','placeholder' => __('lang_v1.shipping_address') ,'rows' => '4']); !!}
-			        </div>
-			    </div>
-
-			    <div class="col-md-6">
-			        <div class="form-group">
-			            {!! Form::label('shipping_status', __('lang_v1.shipping_status') . ':' ) !!}
-			            {!! Form::select('shipping_status',$shipping_statuses, !empty($transaction->shipping_status) ? $transaction->shipping_status : null, ['class' => 'form-control','placeholder' => __('messages.please_select')]); !!}
-			        </div>
-			    </div>
-
-			    <div class="col-md-6">
-			        <div class="form-group">
-			            {!! Form::label('delivered_to', __('lang_v1.delivered_to') . ':' ) !!}
-			            {!! Form::text('delivered_to', !empty($transaction->delivered_to) ? $transaction->delivered_to : null, ['class' => 'form-control','placeholder' => __('lang_v1.delivered_to')]); !!}
-			        </div>
-			    </div>
-			    @php
+				@php
 			        $custom_labels = json_decode(session('business.custom_labels'), true);
 
 			        $shipping_custom_label_1 = !empty($custom_labels['shipping']['custom_field_1']) ? $custom_labels['shipping']['custom_field_1'] : '';
@@ -57,23 +30,21 @@
 			        
 			        $is_shipping_custom_field_5_required = !empty($custom_labels['shipping']['is_custom_field_5_required']) && $custom_labels['shipping']['is_custom_field_5_required'] == 1 ? true : false;
 		        @endphp
-
-		        @if(!empty($shipping_custom_label_1))
-		        	@php
-		        		$label_1 = $shipping_custom_label_1 . ':';
-		        		if($is_shipping_custom_field_1_required) {
-		        			$label_1 .= '*';
-		        		}
-		        	@endphp
-
-		        	<div class="col-md-6">
-				        <div class="form-group">
-				            {!! Form::label('shipping_custom_field_1', $label_1 ) !!}
-				            {!! Form::text('shipping_custom_field_1', !empty($transaction->shipping_custom_field_1) ? $transaction->shipping_custom_field_1 : null, ['class' => 'form-control','placeholder' => $shipping_custom_label_1, 'required' => $is_shipping_custom_field_1_required]); !!}
-				        </div>
-				    </div>
-		        @endif
-		        @if(!empty($shipping_custom_label_2))
+				@if(!empty($shipping_custom_label_1))
+					@php
+						$label_1 = $shipping_custom_label_1 . ':';
+						if($is_shipping_custom_field_1_required) {
+							$label_1 .= '*';
+						}
+					@endphp
+					<div class="col-md-6">
+						<div class="form-group">
+							{!! Form::label('shipping_custom_field_1', $label_1 ) !!}
+							{!! Form::date('shipping_custom_field_1', !empty($transaction->shipping_custom_field_1) ? $transaction->shipping_custom_field_1 : null, ['class' => 'form-control','placeholder' => $shipping_custom_label_1, 'required' => $is_shipping_custom_field_1_required]); !!}
+						</div>
+					</div>
+				@endif
+				@if(!empty($shipping_custom_label_2))
 		        	@php
 		        		$label_2 = $shipping_custom_label_2 . ':';
 		        		if($is_shipping_custom_field_2_required) {
@@ -103,6 +74,38 @@
 				        </div>
 				    </div>
 		        @endif
+				
+				{{-- <div class="col-md-6">
+			        <div class="form-group">
+			            {!! Form::label('shipping_details', __('sale.shipping_details') . ':*' ) !!}
+			            {!! Form::text('shipping_details', !empty($transaction->shipping_details) ? $transaction->shipping_details : '', ['class' => 'form-control','placeholder' => __('sale.shipping_details'), 'required' ,'rows' => '4']); !!}
+			        </div>
+			    </div> --}}
+
+			    <div class="col-md-6">
+			        <div class="form-group">
+			            {!! Form::label('shipping_address', __('lang_v1.shipping_address') . ':' ) !!}
+			            {!! Form::text('shipping_address',!empty($transaction->shipping_address) ? $transaction->shipping_address : '', ['class' => 'form-control','placeholder' => __('lang_v1.shipping_address') ,'rows' => '4']); !!}
+			        </div>
+			    </div>
+
+			    <div class="col-md-6">
+			        <div class="form-group">
+			            {!! Form::label('shipping_status', __('lang_v1.shipping_status') . ':' ) !!}
+			            {!! Form::select('shipping_status',$shipping_statuses, !empty($transaction->shipping_status) ? $transaction->shipping_status : null, ['class' => 'form-control','placeholder' => __('messages.please_select')]); !!}
+			        </div>
+			    </div>
+
+			    <div class="col-md-6">
+			        <div class="form-group">
+			            {!! Form::label('delivered_to', __('lang_v1.delivered_to') . ':' ) !!}
+			            {!! Form::text('delivered_to', !empty($transaction->delivered_to) ? $transaction->delivered_to : null, ['class' => 'form-control','placeholder' => __('lang_v1.delivered_to')]); !!}
+			        </div>
+			    </div>
+			    
+
+		        
+		        
 		        @if(!empty($shipping_custom_label_4))
 		        	@php
 		        		$label_4 = $shipping_custom_label_4 . ':';
