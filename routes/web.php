@@ -19,6 +19,16 @@ Route::middleware(['setData'])->group(function () {
     });
 
     Auth::routes();
+    Route::get('/lang/{lang}',function($lang){
+        if($lang == 'en'){
+            //set arabic
+            session(['user.language'=>'ar']);
+        }else{
+            //set english
+            session(['user.language'=>'en']);
+        }
+        return redirect()->back();
+    });
 
     Route::get('/business/register', 'BusinessController@getRegister')->name('business.getRegister');
     Route::post('/business/register', 'BusinessController@postRegister')->name('business.postRegister');

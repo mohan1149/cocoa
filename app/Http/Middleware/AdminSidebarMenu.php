@@ -751,6 +751,10 @@ class AdminSidebarMenu
                     ['icon' => 'fa fas fa-cog', 'id' => 'tour_step3']
                 )->order(85);
             }
+            $menu->url('/lang/'.app()->getLocale(),
+                app()->getLocale() =="en"? 'Arabic':"English",
+                ['icon' => 'fa fas fa-globe'])
+            ->order(91);
         });
         
         //Add menus from modules
