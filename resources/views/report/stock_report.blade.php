@@ -65,20 +65,20 @@
     <div class="row">
         <div class="col-md-12">
             @component('components.widget', ['class' => 'box-solid'])
-            <table class="table no-border">
-                <tr>
+            <!-- <table class="table no-border"> -->
+                <!-- <tr>
                     <td>@lang('report.closing_stock') (@lang('lang_v1.by_purchase_price'))</td>
                     <td>@lang('report.closing_stock') (@lang('lang_v1.by_sale_price'))</td>
                     <td>@lang('lang_v1.potential_profit')</td>
                     <td>@lang('lang_v1.profit_margin')</td>
-                </tr>
-                <tr>
+                </tr> -->
+                <!-- <tr>
                     <td><h3 id="closing_stock_by_pp" class="mb-0 mt-0"></h3></td>
                     <td><h3 id="closing_stock_by_sp" class="mb-0 mt-0"></h3></td>
                     <td><h3 id="potential_profit" class="mb-0 mt-0"></h3></td>
                     <td><h3 id="profit_margin" class="mb-0 mt-0"></h3></td>
-                </tr>
-            </table>
+                </tr> -->
+            <!-- </table> -->
             @endcomponent
         </div>
     </div>

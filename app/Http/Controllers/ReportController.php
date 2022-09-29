@@ -370,6 +370,12 @@ class ReportController extends Controller
                     $name = $row->product;
                     return $name;
                 })
+                ->editColumn('product_custom_field1', function ($row) {
+                    
+                    $base = $row->stock + (float)$row->total_transfered;
+                    return '<span class="current_stock" data-orig-value="' . (float)$base . '" data-unit="' . $row->unit . '"> ' . $this->transactionUtil->num_f($base, false, null, true) . '</span>' . ' ' . $row->unit ;
+                })
+                
                 ->addColumn('variation', function($row){
                     $variation = '';
                     if ($row->type == 'variable') {
@@ -445,7 +451,7 @@ class ReportController extends Controller
                 ->removeColumn('unit')
                 ->removeColumn('id');
 
-            $raw_columns  = ['unit_price', 'total_transfered', 'total_sold',
+            $raw_columns  = ['unit_price', 'total_transfered', 'total_sold','product_custom_field1',
                     'total_adjusted', 'stock', 'stock_price', 'stock_value_by_sale_price', 'potential_profit'];
 
             if ($show_manufacturing_data) {
