@@ -75,9 +75,15 @@ class StockTransferController extends Controller
                         't2.location_id',
                         '=',
                         'l2.id'
-                    )
-                    ->where('transactions.business_id', $business_id)
-                    ->where('transactions.type', 'sell_transfer')
+                    );
+
+                    $stock_transfers = $stock_transfers->where('transactions.business_id', $business_id);
+                    if(isset(request()->start_date)){
+                        $start = request()->start_date;
+                        $end = request()->end_date;
+                        $stock_transfers = $stock_transfers->whereDate('transactions.transaction_date', '>=', $start)->whereDate('transactions.transaction_date', '<=', $end);
+                    }
+                    $stock_transfers = $stock_transfers->where('transactions.type', 'sell_transfer')
                     ->select(
                         'transactions.id',
                         'transactions.transaction_date',
@@ -90,7 +96,6 @@ class StockTransferController extends Controller
                         'transactions.id as DT_RowId',
                         'transactions.status'
                     );
-            
             return Datatables::of($stock_transfers)
                 ->addColumn('action', function ($row) use ($edit_days) {
                     $html = '<button type="button" title="' . __("stock_adjustment.view_details") . '" class="btn btn-primary btn-xs btn-modal" data-container=".view_modal" data-href="' . action('StockTransferController@show', [$row->id]) . '"><i class="fa fa-eye" aria-hidden="true"></i> ' . __('messages.view') . '</button>';

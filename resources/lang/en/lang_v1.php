@@ -294,7 +294,7 @@ return [
    'design' => 'Design',
    'express_checkout_cash' => 'Cash',
    'express_checkout_card' => 'Card',
-   'checkout_multi_pay' => 'Multiple Pay',
+   'checkout_multi_pay' => 'Link/Split Pay',
    'tooltip_checkout_multi_pay' => 'Checkout using multiple payment methods',
    'tooltip_express_checkout_card' => 'Express checkout using card',
    'card_transaction_details' => 'Card transaction details',

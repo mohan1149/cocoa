@@ -1,5 +1,17 @@
 $(document).ready(function() {
     //Add products
+    $('#sell_list_filter_date_range').daterangepicker(
+        dateRangeSettings,
+        function (start, end) {
+            $('#sell_list_filter_date_range').val(start.format(moment_date_format) + ' ~ ' + end.format(moment_date_format));
+            stock_transfer_table.ajax.reload();
+        }
+    );
+    $('#sell_list_filter_date_range').on('cancel.daterangepicker', function(ev, picker) {
+        $('#sell_list_filter_date_range').val('');
+        stock_transfer_table.ajax.reload();
+    });
+
     if ($('#search_product_for_srock_adjustment').length > 0) {
         //Add Product
         $('#search_product_for_srock_adjustment')
@@ -137,7 +149,18 @@ $(document).ready(function() {
         processing: true,
         serverSide: true,
         aaSorting: [[0, 'desc']],
-        ajax: '/stock-transfers',
+        "ajax": {
+            "url":'/stock-transfers',
+            "data": function ( d ) {
+                if($('#sell_list_filter_date_range').val()) {
+                    var start = $('#sell_list_filter_date_range').data('daterangepicker').startDate.format('YYYY-MM-DD');
+                    var end = $('#sell_list_filter_date_range').data('daterangepicker').endDate.format('YYYY-MM-DD');
+                    d.start_date = start;
+                    d.end_date = end;
+                }
+                d = __datatable_ajax_callback(d);
+            }
+        },
         columnDefs: [
             {
                 targets: 8,

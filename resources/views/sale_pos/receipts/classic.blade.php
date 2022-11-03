@@ -1,7 +1,6 @@
 <!-- business information here -->
 
 <div class="row">
-
 	<!-- Logo -->
 	@if(!empty($receipt_details->logo))
 		<img style="max-height: 120px; width: auto;" src="{{$receipt_details->logo}}" class="img img-responsive center-block">
@@ -20,6 +19,7 @@
 			<!-- Shop & Location Name  -->
 			@if(!empty($receipt_details->display_name))
 				{{$receipt_details->display_name}}
+				<h3>w2ytiyhu sow </h3>
 			@endif
 		</h2>
 
