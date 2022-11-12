@@ -19,7 +19,6 @@
 			<!-- Shop & Location Name  -->
 			@if(!empty($receipt_details->display_name))
 				{{$receipt_details->display_name}}
-				<h3>w2ytiyhu sow </h3>
 			@endif
 		</h2>
 
