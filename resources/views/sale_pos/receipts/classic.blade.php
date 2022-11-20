@@ -215,9 +215,9 @@
 					<br><strong>{!!$receipt_details->shipping_custom_field_3_label!!}:</strong> {!!$receipt_details->shipping_custom_field_3_value ?? ''!!}
 				@endif
 
-				@if(!empty($receipt_details->shipping_custom_field_4_label))
+				{{-- @if(!empty($receipt_details->shipping_custom_field_4_label))
 					<br><strong>{!!$receipt_details->shipping_custom_field_4_label!!}:</strong> {!!$receipt_details->shipping_custom_field_4_value ?? ''!!}
-				@endif
+				@endif --}}
 
 				@if(!empty($receipt_details->shipping_custom_field_5_label))
 					<br><strong>{!!$receipt_details->shipping_custom_field_2_label!!}:</strong> {!!$receipt_details->shipping_custom_field_5_value ?? ''!!}
