@@ -130,6 +130,15 @@ Route::middleware(['setData', 'auth', 'SetSessionData', 'language', 'timezone', 
     Route::post('/products/toggle-woocommerce-sync', 'ProductController@toggleWooCommerceSync');
     
     Route::resource('products', 'ProductController');
+    
+    Route::get('/make-product-for-pos','ProductController@makeProductForPos');
+    Route::post('/make-product-for-pos','ProductController@makeProductForPosSale');
+    Route::get('/branch-products/{bid}','ProductController@branchProducts');
+
+
+
+
+
 
     Route::post('/import-purchase-products', 'PurchaseController@importPurchaseProducts');
     Route::post('/purchases/update-status', 'PurchaseController@updateStatus');

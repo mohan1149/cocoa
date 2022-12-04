@@ -1477,4 +1477,7 @@ return [
     'quantity_in_second_unit' => 'Quantity in :unit',
     'login_as_username' => 'Login as :username',
     'back_to_username' => 'Back to :username',
+    'make_product_for_pos'=>'Make Product for POS',
+    'choose'=>'Choose',
+    'make_available_for_pos'=>'Make Available for POS'
 ];

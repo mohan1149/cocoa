@@ -136,6 +136,16 @@ class AdminSidebarMenu
                             );
                         }
                         if (auth()->user()->can('product.create')) {
+                            $sub->url('/make-product-for-pos',__('lang_v1.make_product_for_pos'),
+                                ['icon' => 'fa fas fa-circle', 'active' => request()->segment(1) == 'variation-templates']
+                            );
+                            $sub->url(
+                                action('ImportProductsController@index'),
+                                __('product.import_products'),
+                                ['icon' => 'fa fas fa-download', 'active' => request()->segment(1) == 'import-products']
+                            );
+                        }
+                        if (auth()->user()->can('product.create')) {
                             $sub->url(
                                 action('VariationTemplateController@index'),
                                 __('product.variations'),
