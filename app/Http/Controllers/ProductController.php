@@ -2346,10 +2346,28 @@ class ProductController extends Controller
             $products = Product::where('type','combo')
             ->join('product_locations','product_locations.product_id','=','products.id')
             ->where('product_locations.location_id',$request['bid'])
+            ->join('variations','variations.product_id','=','products.id')
+            ->select(['products.id','products.name as pname','variations.combo_variations'])
             ->get();
-            return response()->json($products, 200);
+            foreach($products as $prd){
+                $combos = json_decode($prd->combo_variations);
+                $clist = [];
+                foreach($combos as $combo){
+                    $varId = $combo->variation_id;
+                    $clist[]= Product::where('products.id',$varId)
+                    ->join('variation_location_details','variation_location_details.product_id','=','products.id')
+                    ->where('location_id',$request['bid'])
+                    ->select(['name','qty_available'])->first();
+                }
+                $resPrds[] = [
+                    'combos' => $clist,
+                    'prd' => $prd,
+                ];
+            }
+            return response()->json($resPrds, 200);
 
         } catch (\Exception $e) {
+            return $e->getMessage().$e->getLine();
             return response()->json([], 200);
         }
     }
@@ -2360,26 +2378,48 @@ class ProductController extends Controller
             $products = $request['products'];
             foreach ($products as $key => $product) {
                 $inp_qun = $request['product_line_item_'.$product];
-                $combo_product = Product::find($product);
+                $combo_product = Product::where('id',$product)->first();
                 $singPrd = Product::where('sku',$combo_product->product_custom_field1)->first();
                 $existStockPr = DB::table('variation_location_details')->where('product_id',$singPrd->id)->where('location_id',$branch)->first();
                 $oldStock = 0;
                 if(isset($existStockPr)){
                     $oldStock =  $existStockPr->qty_available;
                 }
-                DB::table('variation_location_details')
+                $variation = Variation::where('product_id',$product)->first();
+                $qunCheck = false;
+                foreach ($variation->combo_variations as $key => $indPrd) {
+                    $indprdxExitStock = DB::table('variation_location_details')
+                    ->where('location_id',$branch)
+                    ->where('product_id',$indPrd['variation_id'])
+                    ->first();
+                    if(floatval($indprdxExitStock->qty_available) < ($indPrd['quantity']*$inp_qun)){
+                        $qunCheck = false;
+                        break;
+                    }else{
+                        $qunCheck = true;
+                    }
+                }
+                if($qunCheck == true){
+                    foreach ($variation->combo_variations as $key => $indPrd) {
+                        $indprdxExitStock = DB::table('variation_location_details')
+                        ->where('location_id',$branch)
+                        ->where('product_id',$indPrd['variation_id'])
+                        ->first();
+                        DB::table('variation_location_details')
+                            ->where('product_id',$indPrd['variation_id'])
+                            ->where('location_id',$branch)
+                            ->update(
+                            ['qty_available' => $indprdxExitStock->qty_available - ($indPrd['quantity']*$inp_qun)]
+                        );
+                    }
+                    DB::table('variation_location_details')
                     ->updateOrInsert(
                     ['location_id' => $branch, 'product_id' => $singPrd->id,'product_variation_id'=>$singPrd->id,'variation_id'=>$singPrd->id],
                     ['qty_available' => $inp_qun+$oldStock]
                 );
-                $variation = Variation::where('product_id',$product)->first();
-                foreach ($variation->combo_variations as $key => $indPrd) {
-                    $indprdxExitStock = DB::table('variation_location_details')->where('product_id',$indPrd['variation_id'])->first();
-                    DB::table('variation_location_details')
-                        ->where('product_id',$indPrd['variation_id'])
-                        ->update(
-                        ['qty_available' => $indprdxExitStock->qty_available - ($indPrd['quantity']*$inp_qun)]
-                    );
+                }else{
+                    return "Raw Materials not available for ".$combo_product->name;
+
                 }
             }
             return redirect('/products');

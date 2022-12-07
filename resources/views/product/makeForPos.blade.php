@@ -44,15 +44,17 @@
 @section('javascript')
     <script type="text/javascript">
         $(document).ready(function() {
+            let list = [];
             $('.branch').change((e) => {
                 $.ajax({
                     url: '/branch-products/' + e.target.value,
                     success: function(result) {
+                        list = result;
                         $('.products').empty();
                         let options = "<option>Choose</option>";
                         for (let index = 0; index < result.length; index++) {
-                            options += "<option value='" + result[index].id + "'>" + result[
-                                index].name + "</option>";
+                            options += "<option value='" + result[index].prd.id + "'>" + result[
+                                index].prd.pname + "</option>";
                         }
                         $('.products').append(options);
 
@@ -61,12 +63,19 @@
             });
             $('.products').select2();
             $('.products').change(e => {
-                console.log(e.target.selectedOptions);
                 let prds = $('.products').val();
                 $('.line_products').empty();
                 for (let index = 0; index < prds.length; index++) {
                     let formgrp = "<tr>";
-                    formgrp += "<td>"+e.target.selectedOptions[index].innerText+"</td>";
+                    formgrp += "<td><h5>" + e.target.selectedOptions[index].innerText + "</h5>";
+                    formgrp += "<ul>";
+                    let combos = list.filter((item) => item.prd.id == prds[index]);
+                    
+                    for (let index = 0; index < combos[0].combos.length; index++) {
+                        formgrp+="<li>"+combos[0].combos[index].name+" - "+combos[0].combos[index].qty_available+"</li>";  
+                    }
+                    formgrp += "</ul>";
+                    formgrp += "</td>"
                     formgrp += "<td><input name='product_line_item_" + prds[index] +
                         "' class='form-control' type='text' placeholder='Quantity'></td>";
                     formgrp += "</tr>";
