@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use App\Exports\ProductsExport;
 use Excel;
+use App\Transaction;
 
 class ProductController extends Controller
 {
@@ -2385,6 +2386,10 @@ class ProductController extends Controller
                 if(isset($existStockPr)){
                     $oldStock =  $existStockPr->qty_available;
                 }
+
+                $purlinePrd = DB::table('purchase_lines')
+                ->where('product_id',$singPrd->id)->first();
+
                 $variation = Variation::where('product_id',$product)->first();
                 $qunCheck = false;
                 foreach ($variation->combo_variations as $key => $indPrd) {
@@ -2412,18 +2417,45 @@ class ProductController extends Controller
                             ['qty_available' => $indprdxExitStock->qty_available - ($indPrd['quantity']*$inp_qun)]
                         );
                     }
-                    $purlinePrd = DB::table('purchase_lines')
-                    ->where('product_id',$singPrd->id)->first();
                     DB::table('variation_location_details')
                     ->updateOrInsert(
                         ['location_id' => $branch, 'product_id' => $singPrd->id,'product_variation_id'=>$singPrd->id,'variation_id'=>$singPrd->id],
                         ['qty_available' => $inp_qun+$oldStock]
                     );
-                    DB::table('purchase_lines')
+
+
+                    // check transaction
+                    $purprd = DB::table('purchase_lines')
                     ->where('product_id',$singPrd->id)
-                    ->update(
-                        ['quantity' => $inp_qun+$purlinePrd->quantity]
-                    );
+                    ->first();
+                    if(isset($purprd)){
+                        DB::table('purchase_lines')
+                        ->where('product_id',$singPrd->id)
+                        ->update(
+                            ['quantity' => $inp_qun+$purprd->quantity]
+                        );
+                    }else{
+                        //create trans and update
+                        $purTrans = new Transaction();
+                        $purTrans->business_id = request()->session()->get('user.business_id');
+                        $purTrans->location_id = $branch;
+                        $purTrans->type = 'opening_stock';
+                        $purTrans->status = 'received';
+                        $purTrans->payment_status = 'paid';
+                        $purTrans->transaction_date = date('Y-m-d');
+                        $purTrans->created_by = $request->session()->get('user.id');
+                        $purTrans->save();
+                        //create purcahe line
+                        $purl = new PurchaseLine();
+                        $purl->transaction_id = $purTrans->id;
+                        $purl->product_id = $singPrd->id;
+                        $purl->variation_id  = $singPrd->id;
+                        $purl->quantity = $inp_qun;
+                        $purl->purchase_price = 0;
+                        $purl->save();
+
+                    }
+                    
                 }else{
                     return "Raw Materials not available for ".$combo_product->name;
 
@@ -2431,6 +2463,7 @@ class ProductController extends Controller
             }
             return redirect('/products');
         } catch (\Exception $e) {
+            return $e->getMessage();
             return "Single or Raw Materials not available for one of the product you choosen.";
         }
         
