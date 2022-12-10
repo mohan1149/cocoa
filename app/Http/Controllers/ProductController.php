@@ -2412,11 +2412,18 @@ class ProductController extends Controller
                             ['qty_available' => $indprdxExitStock->qty_available - ($indPrd['quantity']*$inp_qun)]
                         );
                     }
+                    $purlinePrd = DB::table('purchase_lines')
+                    ->where('product_id',$singPrd->id)->first();
                     DB::table('variation_location_details')
                     ->updateOrInsert(
-                    ['location_id' => $branch, 'product_id' => $singPrd->id,'product_variation_id'=>$singPrd->id,'variation_id'=>$singPrd->id],
-                    ['qty_available' => $inp_qun+$oldStock]
-                );
+                        ['location_id' => $branch, 'product_id' => $singPrd->id,'product_variation_id'=>$singPrd->id,'variation_id'=>$singPrd->id],
+                        ['qty_available' => $inp_qun+$oldStock]
+                    );
+                    DB::table('purchase_lines')
+                    ->where('product_id',$singPrd->id)
+                    ->update(
+                        ['quantity' => $inp_qun+$purlinePrd->quantity]
+                    );
                 }else{
                     return "Raw Materials not available for ".$combo_product->name;
 
