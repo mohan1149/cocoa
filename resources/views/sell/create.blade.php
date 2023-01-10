@@ -222,7 +222,7 @@
 					<div class="@if(!empty($commission_agent)) col-sm-3 @else col-sm-4 @endif">
 						<div class="form-group">
 							{!! Form::label('status', __('sale.status') . ':*') !!}
-							{!! Form::select('status', $statuses, null, ['class' => 'form-control select2', 'placeholder' => __('messages.please_select'), 'required']); !!}
+							{!! Form::select('status', $statuses, 'final', ['class' => 'form-control select2', 'placeholder' => __('messages.please_select'), 'required']); !!}
 						</div>
 					</div>
 				@endif
@@ -557,7 +557,7 @@
 			<div class="col-md-4">
 				<div class="form-group">
 		            {!! Form::label('shipping_status', __('lang_v1.shipping_status')) !!}
-		            {!! Form::select('shipping_status',$shipping_statuses, null, ['class' => 'form-control','placeholder' => __('messages.please_select')]); !!}
+		            {!! Form::select('shipping_status',$shipping_statuses, 'ordered', ['class' => 'form-control','placeholder' => __('messages.please_select')]); !!}
 		        </div>
 			</div>
 			<div class="col-md-4">
