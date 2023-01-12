@@ -1,0 +1,1 @@
+[2022-11-19 15:33:49] local.EMERGENCY: File:/Users/mohan/projects/mohan/laravel/cocoa/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.phpLine:454Message:No query results for model [App\Variation].  
