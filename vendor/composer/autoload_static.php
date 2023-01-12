@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitbb58fedb7a6b4524f4bd2f6dcfabef31
+class ComposerStaticInit6835da2fcbd8d50b2259aae2b995d36f
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -561,8 +561,8 @@ class ComposerStaticInitbb58fedb7a6b4524f4bd2f6dcfabef31
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -594,7 +594,7 @@ class ComposerStaticInitbb58fedb7a6b4524f4bd2f6dcfabef31
         ),
         'PackageVersions\\' => 
         array (
-            0 => __DIR__ . '/..' . '/ocramius/package-versions/src/PackageVersions',
+            0 => __DIR__ . '/..' . '/composer/package-versions-deprecated/src/PackageVersions',
         ),
         'Opis\\Closure\\' => 
         array (
@@ -5241,9 +5241,9 @@ class ComposerStaticInitbb58fedb7a6b4524f4bd2f6dcfabef31
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
-        'PackageVersions\\ComposerV2Plugin' => __DIR__ . '/..' . '/ocramius/package-versions/src/PackageVersions/ComposerV2Plugin.php',
-        'PackageVersions\\Installer' => __DIR__ . '/..' . '/ocramius/package-versions/src/PackageVersions/Installer.php',
-        'PackageVersions\\Versions' => __DIR__ . '/..' . '/ocramius/package-versions/src/PackageVersions/Versions.php',
+        'PackageVersions\\FallbackVersions' => __DIR__ . '/..' . '/composer/package-versions-deprecated/src/PackageVersions/FallbackVersions.php',
+        'PackageVersions\\Installer' => __DIR__ . '/..' . '/composer/package-versions-deprecated/src/PackageVersions/Installer.php',
+        'PackageVersions\\Versions' => __DIR__ . '/..' . '/composer/package-versions-deprecated/src/PackageVersions/Versions.php',
         'Parsedown' => __DIR__ . '/..' . '/erusev/parsedown/Parsedown.php',
         'Patchwork\\PHP\\Shim\\Iconv' => __DIR__ . '/..' . '/patchwork/utf8/src/Patchwork/PHP/Shim/Iconv.php',
         'Patchwork\\PHP\\Shim\\Intl' => __DIR__ . '/..' . '/patchwork/utf8/src/Patchwork/PHP/Shim/Intl.php',
@@ -5363,10 +5363,7 @@ class ComposerStaticInitbb58fedb7a6b4524f4bd2f6dcfabef31
         'PhpOffice\\PhpSpreadsheet\\Calculation\\Engine\\ArrayArgumentProcessor' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Engine/ArrayArgumentProcessor.php',
         'PhpOffice\\PhpSpreadsheet\\Calculation\\Engine\\BranchPruner' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Engine/BranchPruner.php',
         'PhpOffice\\PhpSpreadsheet\\Calculation\\Engine\\CyclicReferenceStack' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Engine/CyclicReferenceStack.php',
-        'PhpOffice\\PhpSpreadsheet\\Calculation\\Engine\\FormattedNumber' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Engine/FormattedNumber.php',
         'PhpOffice\\PhpSpreadsheet\\Calculation\\Engine\\Logger' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Engine/Logger.php',
-        'PhpOffice\\PhpSpreadsheet\\Calculation\\Engine\\Operands\\Operand' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Engine/Operands/Operand.php',
-        'PhpOffice\\PhpSpreadsheet\\Calculation\\Engine\\Operands\\StructuredReference' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Engine/Operands/StructuredReference.php',
         'PhpOffice\\PhpSpreadsheet\\Calculation\\Engineering' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Engineering.php',
         'PhpOffice\\PhpSpreadsheet\\Calculation\\Engineering\\BesselI' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Engineering/BesselI.php',
         'PhpOffice\\PhpSpreadsheet\\Calculation\\Engineering\\BesselJ' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Engineering/BesselJ.php',
@@ -5631,7 +5628,6 @@ class ComposerStaticInitbb58fedb7a6b4524f4bd2f6dcfabef31
         'PhpOffice\\PhpSpreadsheet\\Reader\\Xlsx\\SheetViewOptions' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Xlsx/SheetViewOptions.php',
         'PhpOffice\\PhpSpreadsheet\\Reader\\Xlsx\\SheetViews' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Xlsx/SheetViews.php',
         'PhpOffice\\PhpSpreadsheet\\Reader\\Xlsx\\Styles' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Xlsx/Styles.php',
-        'PhpOffice\\PhpSpreadsheet\\Reader\\Xlsx\\TableReader' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Xlsx/TableReader.php',
         'PhpOffice\\PhpSpreadsheet\\Reader\\Xlsx\\Theme' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Xlsx/Theme.php',
         'PhpOffice\\PhpSpreadsheet\\Reader\\Xlsx\\WorkbookView' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Xlsx/WorkbookView.php',
         'PhpOffice\\PhpSpreadsheet\\Reader\\Xml' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Xml.php',
@@ -5664,9 +5660,12 @@ class ComposerStaticInitbb58fedb7a6b4524f4bd2f6dcfabef31
         'PhpOffice\\PhpSpreadsheet\\Shared\\File' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/File.php',
         'PhpOffice\\PhpSpreadsheet\\Shared\\Font' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/Font.php',
         'PhpOffice\\PhpSpreadsheet\\Shared\\IntOrFloat' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/IntOrFloat.php',
+        'PhpOffice\\PhpSpreadsheet\\Shared\\JAMA\\CholeskyDecomposition' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/JAMA/CholeskyDecomposition.php',
+        'PhpOffice\\PhpSpreadsheet\\Shared\\JAMA\\EigenvalueDecomposition' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/JAMA/EigenvalueDecomposition.php',
         'PhpOffice\\PhpSpreadsheet\\Shared\\JAMA\\LUDecomposition' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/JAMA/LUDecomposition.php',
         'PhpOffice\\PhpSpreadsheet\\Shared\\JAMA\\Matrix' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/JAMA/Matrix.php',
         'PhpOffice\\PhpSpreadsheet\\Shared\\JAMA\\QRDecomposition' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/JAMA/QRDecomposition.php',
+        'PhpOffice\\PhpSpreadsheet\\Shared\\JAMA\\SingularValueDecomposition' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/JAMA/SingularValueDecomposition.php',
         'PhpOffice\\PhpSpreadsheet\\Shared\\OLE' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/OLE.php',
         'PhpOffice\\PhpSpreadsheet\\Shared\\OLERead' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/OLERead.php',
         'PhpOffice\\PhpSpreadsheet\\Shared\\OLE\\ChainedBlockStream' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/OLE/ChainedBlockStream.php',
@@ -5788,14 +5787,12 @@ class ComposerStaticInitbb58fedb7a6b4524f4bd2f6dcfabef31
         'PhpOffice\\PhpSpreadsheet\\Writer\\Xls\\Worksheet' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xls/Worksheet.php',
         'PhpOffice\\PhpSpreadsheet\\Writer\\Xls\\Xf' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xls/Xf.php',
         'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx.php',
-        'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx\\AutoFilter' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/AutoFilter.php',
         'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx\\Chart' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/Chart.php',
         'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx\\Comments' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/Comments.php',
         'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx\\ContentTypes' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/ContentTypes.php',
         'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx\\DefinedNames' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/DefinedNames.php',
         'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx\\DocProps' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/DocProps.php',
         'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx\\Drawing' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/Drawing.php',
-        'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx\\FunctionPrefix' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/FunctionPrefix.php',
         'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx\\Rels' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/Rels.php',
         'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx\\RelsRibbon' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/RelsRibbon.php',
         'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx\\RelsVBA' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/RelsVBA.php',
@@ -5806,6 +5803,7 @@ class ComposerStaticInitbb58fedb7a6b4524f4bd2f6dcfabef31
         'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx\\Workbook' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/Workbook.php',
         'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx\\Worksheet' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/Worksheet.php',
         'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx\\WriterPart' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/WriterPart.php',
+        'PhpOffice\\PhpSpreadsheet\\Writer\\Xlsx\\Xlfn' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/Xlfn.php',
         'PhpOption\\LazyOption' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/LazyOption.php',
         'PhpOption\\None' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/None.php',
         'PhpOption\\Option' => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption/Option.php',
@@ -9890,10 +9888,10 @@ class ComposerStaticInitbb58fedb7a6b4524f4bd2f6dcfabef31
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitbb58fedb7a6b4524f4bd2f6dcfabef31::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitbb58fedb7a6b4524f4bd2f6dcfabef31::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitbb58fedb7a6b4524f4bd2f6dcfabef31::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitbb58fedb7a6b4524f4bd2f6dcfabef31::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6835da2fcbd8d50b2259aae2b995d36f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6835da2fcbd8d50b2259aae2b995d36f::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit6835da2fcbd8d50b2259aae2b995d36f::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit6835da2fcbd8d50b2259aae2b995d36f::$classMap;
 
         }, null, ClassLoader::class);
     }
