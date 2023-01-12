@@ -33,6 +33,7 @@
         "spatie/flysystem-dropbox": "^1.0",
         "spatie/laravel-activitylog": "^3.2",
         "spatie/laravel-backup": "^5.7",
+        "spatie/laravel-cors": "^1.7",
         "spatie/laravel-permission": "^2.7",
         "srmklive/paypal": "^1.6",
         "stripe/stripe-php": "^7.122",
