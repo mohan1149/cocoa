@@ -220,7 +220,7 @@
 				@endif --}}
 
 				@if(!empty($receipt_details->shipping_custom_field_5_label))
-					<br><strong>{!!$receipt_details->shipping_custom_field_2_label!!}:</strong> {!!$receipt_details->shipping_custom_field_5_value ?? ''!!}
+					<br><strong>{!!$receipt_details->shipping_custom_field_5_label!!}:</strong> {!!$receipt_details->shipping_custom_field_5_value ?? ''!!}
 				@endif
 				{{-- sale order --}}
 				@if(!empty($receipt_details->sale_orders_invoice_no))
