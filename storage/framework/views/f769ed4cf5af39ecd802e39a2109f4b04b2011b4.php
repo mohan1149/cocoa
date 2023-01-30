@@ -252,7 +252,7 @@
 				
 
 				<?php if(!empty($receipt_details->shipping_custom_field_5_label)): ?>
-					<br><strong><?php echo $receipt_details->shipping_custom_field_2_label; ?>:</strong> <?php echo $receipt_details->shipping_custom_field_5_value ?? ''; ?>
+					<br><strong><?php echo $receipt_details->shipping_custom_field_5_label; ?>:</strong> <?php echo $receipt_details->shipping_custom_field_5_value ?? ''; ?>
 
 				<?php endif; ?>
 				

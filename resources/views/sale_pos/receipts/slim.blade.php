@@ -383,12 +383,12 @@
 
 	                            @if($receipt_details->show_base_unit_details && $line['quantity'] && $line['base_unit_multiplier'] !== 1)
 		                            <br><small>
-		                            	1 {{$line['units']}} = {{$line['base_unit_multiplier']}} {{$line['base_unit_name']}} <br>
+		                            	1 {{$line['units']}} = {{$line['base_unit_multiplier']}} <br>
                             			{{$line['unit_price_inc_tax']}} x {{$line['quantity']}} = {{$line['line_total']}}
 		                            </small>
 		                            @endif
 	                        </td>
-	                        <td class="quantity text-right">{{$line['quantity']}} {{$line['units']}} @if($receipt_details->show_base_unit_details && $line['quantity'] && $line['base_unit_multiplier'] !== 1)
+	                        <td class="quantity text-right">{{$line['quantity']}}  @if($receipt_details->show_base_unit_details && $line['quantity'] && $line['base_unit_multiplier'] !== 1)
                             <br><small>
                             	{{$line['quantity']}} x {{$line['base_unit_multiplier']}} = {{$line['orig_quantity']}} {{$line['base_unit_name']}}
                             </small>
