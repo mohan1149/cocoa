@@ -199,10 +199,14 @@ class SellController extends Controller
             if (!empty(request()->start_date) && !empty(request()->end_date)) {
                 $start = request()->start_date;
                 $end =  request()->end_date;
-                $sells->whereDate('transactions.shipping_custom_field_1', '>=', $start)
-                            ->whereDate('transactions.shipping_custom_field_1', '<=', $end);
+                if($only_shipments){
+                    $sells->whereDate('transactions.shipping_custom_field_1', '>=', $start)
+                    ->whereDate('transactions.shipping_custom_field_1', '<=', $end);
+                }else{
+                    $sells->whereDate('transactions.created_at', '>=', $start)
+                    ->whereDate('transactions.created_at', '<=', $end);
+                }
             }
-
             //Check is_direct sell
             if (request()->has('is_direct_sale')) {
                 $is_direct_sale = request()->is_direct_sale;
